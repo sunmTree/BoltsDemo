@@ -1,0 +1,3 @@
+chart_type=pie
+log_factory_type=com.sunm.model.factory.LoggerFactory
+direction=0
