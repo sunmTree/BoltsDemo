@@ -14,9 +14,10 @@ public abstract class IgoChessman {
 
     public abstract String getColor();
 
-    public void display() {
+    public void display(Coordinates coor) {
         if (DEBUG) {
-            Log.d(TAG, "chessman color " + getColor());
+            Log.d(TAG, "chessman color " + getColor() + " Coordinates "
+                    + coor.toString());
         }
     }
 }

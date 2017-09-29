@@ -30,6 +30,7 @@ import com.sunm.model.decorate.Window;
 import com.sunm.model.factory.ILoggerFactory;
 import com.sunm.model.factory.Logger;
 import com.sunm.model.factory.LoggerFactory;
+import com.sunm.model.flyweight.Coordinates;
 import com.sunm.model.flyweight.IgoChessman;
 import com.sunm.model.flyweight.IgoChessmanFactory;
 import com.sunm.model.simplefactory.ChartFactory;
@@ -213,10 +214,10 @@ public class ThirdActivity extends AppCompatActivity {
             Log.i(TAG, " is equal white " + (white1 == white2));
         }
 
-        black1.display();
-        black2.display();
-        black3.display();
-        white1.display();
-        white2.display();
+        black1. display(new Coordinates(1, 4));
+        black2.display(new Coordinates(3,1));
+        black3.display(new Coordinates(12, 17));
+        white1.display(new Coordinates(2, 0));
+        white2.display(new Coordinates(10, 3));
     }
 }
