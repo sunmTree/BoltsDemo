@@ -30,6 +30,8 @@ import com.sunm.model.decorate.Window;
 import com.sunm.model.factory.ILoggerFactory;
 import com.sunm.model.factory.Logger;
 import com.sunm.model.factory.LoggerFactory;
+import com.sunm.model.flyweight.IgoChessman;
+import com.sunm.model.flyweight.IgoChessmanFactory;
 import com.sunm.model.simplefactory.ChartFactory;
 import com.sunm.model.singleton.Singleton;
 import com.sunm.prop.ModelProp;
@@ -77,6 +79,7 @@ public class ThirdActivity extends AppCompatActivity {
                     activity.bridge();
                     activity.compose();
                     activity.decorate();
+                    activity.flyweight();
                 }
             }
         }
@@ -185,5 +188,35 @@ public class ThirdActivity extends AppCompatActivity {
         component = new Window();
         componentScroll = new ScrollBarDecorator(component);
         componentScroll.display();
+    }
+
+    private void flyweight() {
+        IgoChessman black1, black2, black3;
+        IgoChessman white1, white2;
+        String BLACK_CHESSMAN = "black";
+        String WHITE_CHESSMAN = "white";
+        // 获取享元工厂对象
+        IgoChessmanFactory factory = IgoChessmanFactory.getInstance();
+
+        // 通过工厂获取三个黑子
+        black1 = factory.getIgoChessman(BLACK_CHESSMAN);
+        black2 = factory.getIgoChessman(BLACK_CHESSMAN);
+        black3 = factory.getIgoChessman(BLACK_CHESSMAN);
+        if (DEBUG) {
+            Log.i(TAG, " is equal black " + (black1 == black2));
+        }
+
+        // 通过工厂获取两个白子
+        white1 = factory.getIgoChessman(WHITE_CHESSMAN);
+        white2 = factory.getIgoChessman(WHITE_CHESSMAN);
+        if (DEBUG) {
+            Log.i(TAG, " is equal white " + (white1 == white2));
+        }
+
+        black1.display();
+        black2.display();
+        black3.display();
+        white1.display();
+        white2.display();
     }
 }
