@@ -61,6 +61,7 @@ import com.sunm.model.proxy.ProxySearcher;
 import com.sunm.model.proxy.Searcher;
 import com.sunm.model.simplefactory.ChartFactory;
 import com.sunm.model.singleton.Singleton;
+import com.sunm.model.state.Account;
 import com.sunm.prop.ModelProp;
 import com.sunm.utils.FileUtils;
 import com.sunm.utils.SortUtils;
@@ -116,6 +117,7 @@ public class ThirdActivity extends AppCompatActivity {
                     activity.iteration();
                     activity.mediator();
                     activity.observer();
+                    activity.state();
                 }
             }
         }
@@ -388,5 +390,16 @@ public class ThirdActivity extends AppCompatActivity {
         center.join(player4);
 
         player1.beAttacked(center);
+    }
+
+    // 状态模式
+    private void state() {
+        Account acc = new Account("段誉",0.0);
+        acc.deposit(1000);
+        acc.withDraw(2000);
+        acc.deposit(3000);
+        acc.withDraw(4000);
+        acc.withDraw(1000);
+        acc.computeInterest();
     }
 }
