@@ -19,6 +19,11 @@ import com.sunm.model.builder.ConstructBuilder;
 import com.sunm.model.builder.Director;
 import com.sunm.model.builder.Notify;
 import com.sunm.model.builder.Product;
+import com.sunm.model.chain.Approver;
+import com.sunm.model.chain.Congress;
+import com.sunm.model.chain.President;
+import com.sunm.model.chain.PurchaseRequest;
+import com.sunm.model.chain.VicePresident;
 import com.sunm.model.compose.AbstractFile;
 import com.sunm.model.compose.Folder;
 import com.sunm.model.compose.ImageFile;
@@ -84,6 +89,7 @@ public class ThirdActivity extends AppCompatActivity {
                     activity.decorate();
                     activity.flyweight();
                     activity.proxy();
+                    activity.chain();
                 }
             }
         }
@@ -229,5 +235,28 @@ public class ThirdActivity extends AppCompatActivity {
     private void proxy() {
         Searcher searcher = new ProxySearcher();
         searcher.doSearch("Sunny", "Money");
+    }
+
+    // 责任链模式
+    private void chain() {
+        Approver approver1,approver2,approver3,approver4;
+
+        approver1 = new com.sunm.model.chain.Director("张无忌");
+        approver2 = new VicePresident("杨过");
+        approver3 = new President("郭靖");
+        approver4 = new Congress("董事会");
+
+        approver1.setSuccessor(approver2);
+        approver2.setSuccessor(approver3);
+        approver3.setSuccessor(approver4);
+
+        PurchaseRequest request = new PurchaseRequest(3000, 2, "买东西");
+        approver1.processRequest(request);
+
+        PurchaseRequest request1 = new PurchaseRequest(600000, 2, "并购");
+        approver1.processRequest(request1);
+
+        PurchaseRequest request2 = new PurchaseRequest(34100, 2, "扩张");
+        approver1.processRequest(request2);
     }
 }
