@@ -62,6 +62,9 @@ import com.sunm.model.proxy.Searcher;
 import com.sunm.model.simplefactory.ChartFactory;
 import com.sunm.model.singleton.Singleton;
 import com.sunm.model.state.Account;
+import com.sunm.model.strategy.Discount;
+import com.sunm.model.strategy.MovieTicket;
+import com.sunm.model.strategy.StudentDiscount;
 import com.sunm.prop.ModelProp;
 import com.sunm.utils.FileUtils;
 import com.sunm.utils.SortUtils;
@@ -118,6 +121,7 @@ public class ThirdActivity extends AppCompatActivity {
                     activity.mediator();
                     activity.observer();
                     activity.state();
+                    activity.strategy();
                 }
             }
         }
@@ -401,5 +405,27 @@ public class ThirdActivity extends AppCompatActivity {
         acc.withDraw(4000);
         acc.withDraw(1000);
         acc.computeInterest();
+    }
+
+    // 策略模式
+    private void strategy() {
+        MovieTicket movieTicket = new MovieTicket();
+        double originalPrice = 60.0;
+        double currentPrice;
+
+        movieTicket.setPrice(originalPrice);
+        if (DEBUG) {
+            Log.d(TAG, "原始价为 " + originalPrice);
+            Log.d(TAG, "-----------------------------------------");
+        }
+
+        Discount discount = new StudentDiscount();
+        movieTicket.setDiscount(discount);
+
+        currentPrice = movieTicket.getPrice();
+        if (DEBUG) {
+            Log.d(TAG, " currentPrice " + currentPrice);
+            Log.d(TAG, "-----------------------------------");
+        }
     }
 }

@@ -9,3 +9,4 @@
 - 添加中介者模式  model/mediator
 - 添加观察者模式  model/observer
 - 添加状态模式  model/state
+- 添加策略模式  model/strategy
