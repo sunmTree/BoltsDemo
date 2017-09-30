@@ -33,6 +33,8 @@ import com.sunm.model.factory.LoggerFactory;
 import com.sunm.model.flyweight.Coordinates;
 import com.sunm.model.flyweight.IgoChessman;
 import com.sunm.model.flyweight.IgoChessmanFactory;
+import com.sunm.model.proxy.ProxySearcher;
+import com.sunm.model.proxy.Searcher;
 import com.sunm.model.simplefactory.ChartFactory;
 import com.sunm.model.singleton.Singleton;
 import com.sunm.prop.ModelProp;
@@ -81,6 +83,7 @@ public class ThirdActivity extends AppCompatActivity {
                     activity.compose();
                     activity.decorate();
                     activity.flyweight();
+                    activity.proxy();
                 }
             }
         }
@@ -191,6 +194,7 @@ public class ThirdActivity extends AppCompatActivity {
         componentScroll.display();
     }
 
+    // 享元模式
     private void flyweight() {
         IgoChessman black1, black2, black3;
         IgoChessman white1, white2;
@@ -219,5 +223,11 @@ public class ThirdActivity extends AppCompatActivity {
         black3.display(new Coordinates(12, 17));
         white1.display(new Coordinates(2, 0));
         white2.display(new Coordinates(10, 3));
+    }
+
+    // 代理模式
+    private void proxy() {
+        Searcher searcher = new ProxySearcher();
+        searcher.doSearch("Sunny", "Money");
     }
 }
