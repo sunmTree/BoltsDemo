@@ -24,6 +24,11 @@ import com.sunm.model.chain.Congress;
 import com.sunm.model.chain.President;
 import com.sunm.model.chain.PurchaseRequest;
 import com.sunm.model.chain.VicePresident;
+import com.sunm.model.command.Command;
+import com.sunm.model.command.FBSettingWindow;
+import com.sunm.model.command.FunctionButton;
+import com.sunm.model.command.HelperCommand;
+import com.sunm.model.command.WindowCommand;
 import com.sunm.model.compose.AbstractFile;
 import com.sunm.model.compose.Folder;
 import com.sunm.model.compose.ImageFile;
@@ -90,6 +95,7 @@ public class ThirdActivity extends AppCompatActivity {
                     activity.flyweight();
                     activity.proxy();
                     activity.chain();
+                    activity.command();
                 }
             }
         }
@@ -258,5 +264,26 @@ public class ThirdActivity extends AppCompatActivity {
 
         PurchaseRequest request2 = new PurchaseRequest(34100, 2, "扩张");
         approver1.processRequest(request2);
+    }
+
+    // 命令模式
+    private void command() {
+        FBSettingWindow fbWindow = new FBSettingWindow("快捷键设置");
+        FunctionButton f1, f2;
+        f1 = new FunctionButton("按钮");
+        f2 = new FunctionButton("快捷键");
+
+        Command command1, command2;
+        command1 = new HelperCommand();
+        command2 = new WindowCommand();
+
+        f1.setCommand(command2);
+        f2.setCommand(command1);
+        fbWindow.addFunctionButton(f1);
+        fbWindow.addFunctionButton(f2);
+
+        fbWindow.display();
+        f1.onClick();
+        f2.onClick();
     }
 }
