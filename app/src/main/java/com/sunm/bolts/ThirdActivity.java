@@ -53,6 +53,10 @@ import com.sunm.model.mediator.ComboBox;
 import com.sunm.model.mediator.ConcreteMediator;
 import com.sunm.model.mediator.ListCom;
 import com.sunm.model.mediator.TextBox;
+import com.sunm.model.observer.AllyControllerCenter;
+import com.sunm.model.observer.ConcreteAllyControllerCenter;
+import com.sunm.model.observer.Observer;
+import com.sunm.model.observer.Player;
 import com.sunm.model.proxy.ProxySearcher;
 import com.sunm.model.proxy.Searcher;
 import com.sunm.model.simplefactory.ChartFactory;
@@ -111,6 +115,7 @@ public class ThirdActivity extends AppCompatActivity {
                     activity.interpreter();
                     activity.iteration();
                     activity.mediator();
+                    activity.observer();
                 }
             }
         }
@@ -365,5 +370,23 @@ public class ThirdActivity extends AppCompatActivity {
             Log.d(TAG, " -----------------分割线----------------");
         }
         listCom.changed();
+    }
+
+    // 观察者模式
+    private void observer() {
+        AllyControllerCenter center = new ConcreteAllyControllerCenter();
+        center.setAllyName("刑天");
+        Observer player1, player2, player3, player4;
+
+        player1 = new Player("战神1");
+        player2 = new Player("神2");
+        player3 = new Player("战神----3");
+        player4 = new Player("4");
+        center.join(player1);
+        center.join(player2);
+        center.join(player3);
+        center.join(player4);
+
+        player1.beAttacked(center);
     }
 }
