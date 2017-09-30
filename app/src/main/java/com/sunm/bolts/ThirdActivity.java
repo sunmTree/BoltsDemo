@@ -43,6 +43,7 @@ import com.sunm.model.factory.LoggerFactory;
 import com.sunm.model.flyweight.Coordinates;
 import com.sunm.model.flyweight.IgoChessman;
 import com.sunm.model.flyweight.IgoChessmanFactory;
+import com.sunm.model.interpreter.InstructionHandler;
 import com.sunm.model.proxy.ProxySearcher;
 import com.sunm.model.proxy.Searcher;
 import com.sunm.model.simplefactory.ChartFactory;
@@ -96,6 +97,7 @@ public class ThirdActivity extends AppCompatActivity {
                     activity.proxy();
                     activity.chain();
                     activity.command();
+                    activity.interpreter();
                 }
             }
         }
@@ -285,5 +287,16 @@ public class ThirdActivity extends AppCompatActivity {
         fbWindow.display();
         f1.onClick();
         f2.onClick();
+    }
+
+    // 解释器模式
+    private void interpreter() {
+        String instruction = "up move 5 and down run 10 and left move 5";
+        InstructionHandler handler = new InstructionHandler();
+        handler.handle(instruction);
+        String output = handler.output();
+        if (DEBUG) {
+            Log.d(TAG, "output " + output);
+        }
     }
 }
