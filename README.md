@@ -6,3 +6,4 @@
 
 - 添加解释器模式  model/interpreter
 - 添加迭代器模式  model/iteration
+- 添加中介者模式  model/mediator

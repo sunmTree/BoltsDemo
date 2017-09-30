@@ -48,6 +48,11 @@ import com.sunm.model.iteration.AbstractIteration;
 import com.sunm.model.iteration.AbstractObjectList;
 import com.sunm.model.iteration.ProductIteration;
 import com.sunm.model.iteration.ProductList;
+import com.sunm.model.mediator.Buton;
+import com.sunm.model.mediator.ComboBox;
+import com.sunm.model.mediator.ConcreteMediator;
+import com.sunm.model.mediator.ListCom;
+import com.sunm.model.mediator.TextBox;
 import com.sunm.model.proxy.ProxySearcher;
 import com.sunm.model.proxy.Searcher;
 import com.sunm.model.simplefactory.ChartFactory;
@@ -105,6 +110,7 @@ public class ThirdActivity extends AppCompatActivity {
                     activity.command();
                     activity.interpreter();
                     activity.iteration();
+                    activity.mediator();
                 }
             }
         }
@@ -333,5 +339,31 @@ public class ThirdActivity extends AppCompatActivity {
             Log.d(TAG, "item " + iteration.getPreviousItem().toString());
             iteration.previous();
         }
+    }
+
+    // 中介模式
+    private void mediator() {
+        ConcreteMediator mediator = new ConcreteMediator();
+
+        Buton buton = new Buton();
+        ListCom listCom = new ListCom();
+        ComboBox comboBox = new ComboBox();
+        TextBox textBox = new TextBox();
+
+        buton.setMediator(mediator);
+        listCom.setMediator(mediator);
+        comboBox.setMediator(mediator);
+        textBox.setMediator(mediator);
+
+        mediator.userName = textBox;
+        mediator.comboBox = comboBox;
+        mediator.listCom = listCom;
+        mediator.buton = buton;
+
+        buton.changed();
+        if (DEBUG) {
+            Log.d(TAG, " -----------------分割线----------------");
+        }
+        listCom.changed();
     }
 }
