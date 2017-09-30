@@ -44,6 +44,10 @@ import com.sunm.model.flyweight.Coordinates;
 import com.sunm.model.flyweight.IgoChessman;
 import com.sunm.model.flyweight.IgoChessmanFactory;
 import com.sunm.model.interpreter.InstructionHandler;
+import com.sunm.model.iteration.AbstractIteration;
+import com.sunm.model.iteration.AbstractObjectList;
+import com.sunm.model.iteration.ProductIteration;
+import com.sunm.model.iteration.ProductList;
 import com.sunm.model.proxy.ProxySearcher;
 import com.sunm.model.proxy.Searcher;
 import com.sunm.model.simplefactory.ChartFactory;
@@ -53,6 +57,8 @@ import com.sunm.utils.FileUtils;
 import com.sunm.utils.SortUtils;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ThirdActivity extends AppCompatActivity {
 
@@ -98,6 +104,7 @@ public class ThirdActivity extends AppCompatActivity {
                     activity.chain();
                     activity.command();
                     activity.interpreter();
+                    activity.iteration();
                 }
             }
         }
@@ -297,6 +304,34 @@ public class ThirdActivity extends AppCompatActivity {
         String output = handler.output();
         if (DEBUG) {
             Log.d(TAG, "output " + output);
+        }
+    }
+
+    // 迭代模式
+    private void iteration() {
+        List products = new ArrayList();
+        products.add("Item1");
+        products.add("Item2");
+        products.add("Item3");
+        products.add("Item4");
+        products.add("Item5");
+
+        AbstractObjectList abList = new ProductList(products);
+        AbstractIteration iteration = abList.createIteration();
+
+        if (DEBUG) {
+            Log.d(TAG, "----------------->>>> 正向遍历");
+        }
+        while (!iteration.isLast()) {
+            Log.d(TAG, "item " + iteration.getNext().toString());
+            iteration.next();
+        }
+        if (DEBUG) {
+            Log.d(TAG, "------------------->>>> 反向遍历");
+        }
+        while (! iteration.isFirst()) {
+            Log.d(TAG, "item " + iteration.getPreviousItem().toString());
+            iteration.previous();
         }
     }
 }

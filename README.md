@@ -5,3 +5,4 @@
 一个重要的点是有一个QuickSort的快速排序类，以后会研究下
 
 - 添加解释器模式  model/interpreter
+- 添加迭代器模式  model/iteration
