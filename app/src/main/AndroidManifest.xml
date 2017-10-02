@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ThirdActivity">
+        <activity android:name=".ViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,7 +20,8 @@
 
         <receiver android:name="com.sunm.entry.TestBroadCast" />
 
-        <activity android:name=".BoltsActivity"></activity>
+        <activity android:name=".BoltsActivity" />
+        <activity android:name=".ThirdActivity"></activity>
     </application>
 
 </manifest>

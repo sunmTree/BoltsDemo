@@ -6,10 +6,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.sunm.AppConfig;
-import com.sunm.model.adapter.QuickSort;
+import com.sunm.data.MapDemo;
 import com.sunm.model.bridge.Image;
 import com.sunm.model.bridge.ImageImpl;
 import com.sunm.model.bridge.PNGImage;
@@ -46,7 +45,6 @@ import com.sunm.model.flyweight.IgoChessmanFactory;
 import com.sunm.model.interpreter.InstructionHandler;
 import com.sunm.model.iteration.AbstractIteration;
 import com.sunm.model.iteration.AbstractObjectList;
-import com.sunm.model.iteration.ProductIteration;
 import com.sunm.model.iteration.ProductList;
 import com.sunm.model.mediator.Buton;
 import com.sunm.model.mediator.ComboBox;
@@ -65,9 +63,9 @@ import com.sunm.model.state.Account;
 import com.sunm.model.strategy.Discount;
 import com.sunm.model.strategy.MovieTicket;
 import com.sunm.model.strategy.StudentDiscount;
+import com.sunm.operation.OperationDemo;
 import com.sunm.prop.ModelProp;
 import com.sunm.utils.FileUtils;
-import com.sunm.utils.SortUtils;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -79,14 +77,18 @@ public class ThirdActivity extends AppCompatActivity {
     private static final boolean DEBUG = AppConfig.DEBUG;
 
     private static final int CREATE_CHART_MESSAGE = 1;
+    private static final int OPERATION_MESSAGE = 2;
+
     private ChartFactory.Chart mChart;
     private MyHandler myHandler = new MyHandler(this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third);
-        myHandler.sendEmptyMessageDelayed(CREATE_CHART_MESSAGE, 400);
+
+        myHandler.sendEmptyMessageDelayed(OPERATION_MESSAGE, 400);
     }
 
     class MyHandler extends Handler {
@@ -103,6 +105,13 @@ public class ThirdActivity extends AppCompatActivity {
             if (DEBUG) {
                 Log.d(TAG, "receive message and the activity state " + activity.isFinishing());
             }
+
+            if (OPERATION_MESSAGE == msg.what) {
+                OperationDemo.operation();
+                MapDemo mapDemo = new MapDemo();
+                mapDemo.put("Key", "Value");
+            }
+
             if (CREATE_CHART_MESSAGE == msg.what) {
                 if (activity != null && !activity.isFinishing()) {
                     activity.showChart();
