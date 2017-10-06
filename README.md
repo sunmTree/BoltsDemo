@@ -1,6 +1,6 @@
 # BoltsDemo
-设计模式demo项目
-主要会把一些设计模式的代码实现上传进来
+demo项目
+主要会把一些代码实现上传进来
 
 一个重要的点是有一个QuickSort的快速排序类，以后会研究下
 
@@ -10,3 +10,7 @@
 - 添加观察者模式  model/observer
 - 添加状态模式  model/state
 - 添加策略模式  model/strategy
+
+下面会上传一些数据结构方面的内容
+
+- 添加单链表的实现 data/link
