@@ -8,6 +8,7 @@ import com.sunm.AppConfig;
 import com.sunm.data.link.FirstLastList;
 import com.sunm.data.link.Link;
 import com.sunm.data.link.LinkList;
+import com.sunm.data.link.LinkQueue;
 import com.sunm.data.link.LinkStack;
 
 public class DataActivity extends AppCompatActivity {
@@ -23,6 +24,7 @@ public class DataActivity extends AppCompatActivity {
         linkMethod();
         firstLastLink();
         linkStack();
+        linkQueue();
     }
 
     // 单链表
@@ -95,5 +97,22 @@ public class DataActivity extends AppCompatActivity {
         linkStack.pop();
         linkStack.pop();
         linkStack.displayStack();
+    }
+
+    // 链表实现的队列
+    private void linkQueue() {
+        LinkQueue linkQueue = new LinkQueue();
+
+        linkQueue.insert(1, 10);
+        linkQueue.insert(2, 13);
+        linkQueue.displayQueue();
+
+        linkQueue.insert(3, 19);
+        linkQueue.insert(4, 27);
+        linkQueue.displayQueue();
+
+        linkQueue.remove();
+        linkQueue.remove();
+        linkQueue.displayQueue();
     }
 }

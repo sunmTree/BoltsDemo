@@ -36,9 +36,6 @@ public class FirstLastList extends LinkList{
         } else {
             last.next = link;
         }
-        if (DEBUG) {
-            Log.i(TAG, " last " + last + " last.next " + last.next);
-        }
         last = link;
     }
 

@@ -16,3 +16,4 @@ demo项目
 - 添加单链表的实现 data/link
 - 添加双端链表的实现 data/link/FirstLastLink
 - 添加使用链表实现栈的抽象数据类型ADT
+- 添加使用双端链表实现队列
