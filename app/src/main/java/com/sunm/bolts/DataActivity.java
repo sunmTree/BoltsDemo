@@ -8,6 +8,7 @@ import com.sunm.AppConfig;
 import com.sunm.data.link.FirstLastList;
 import com.sunm.data.link.Link;
 import com.sunm.data.link.LinkList;
+import com.sunm.data.link.LinkStack;
 
 public class DataActivity extends AppCompatActivity {
 
@@ -21,8 +22,10 @@ public class DataActivity extends AppCompatActivity {
 
         linkMethod();
         firstLastLink();
+        linkStack();
     }
 
+    // 单链表
     private void linkMethod() {
         LinkList linkList = new LinkList();
 
@@ -53,6 +56,7 @@ public class DataActivity extends AppCompatActivity {
         }
     }
 
+    // 双端链表
     private void firstLastLink() {
         FirstLastList firstLastList = new FirstLastList();
 
@@ -74,5 +78,22 @@ public class DataActivity extends AppCompatActivity {
             Log.d(TAG, "delete " + (link1 != null ? link1.data : "null"));
         }
         firstLastList.displayList();
+    }
+
+    // 链表实现的栈
+    private void linkStack() {
+        LinkStack linkStack = new LinkStack();
+        linkStack.push(1, 20);
+        linkStack.push(2, 25);
+
+        linkStack.displayStack();
+
+        linkStack.push(3, 30);
+
+        linkStack.displayStack();
+
+        linkStack.pop();
+        linkStack.pop();
+        linkStack.displayStack();
     }
 }
