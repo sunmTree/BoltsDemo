@@ -1,10 +1,11 @@
 package com.sunm.bolts;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.sunm.AppConfig;
+import com.sunm.data.link.FirstLastList;
 import com.sunm.data.link.Link;
 import com.sunm.data.link.LinkList;
 
@@ -19,6 +20,7 @@ public class DataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_data);
 
         linkMethod();
+        firstLastLink();
     }
 
     private void linkMethod() {
@@ -45,8 +47,32 @@ public class DataActivity extends AppCompatActivity {
             Link link = linkList.deleteFirst();
             if (DEBUG) {
                 Log.w(TAG, "Deleted");
-                link.displayLink();
+                if (link != null)
+                    link.displayLink();
             }
         }
+    }
+
+    private void firstLastLink() {
+        FirstLastList firstLastList = new FirstLastList();
+
+        firstLastList.insertFirst(1, 13);
+//        firstLastList.insertFirst(2, 16);
+//        firstLastList.insertFirst(3, 19);
+//        firstLastList.insertFirst(4, 23);
+
+        firstLastList.insertLast(5, 30);
+//        firstLastList.insertLast(6, 35);
+//        firstLastList.insertLast(7, 40);
+//        firstLastList.insertLast(8, 50);
+
+        firstLastList.displayList();
+        Link link = firstLastList.deleteFirst();
+        Link link1 = firstLastList.deleteFirst();
+        if (DEBUG) {
+            Log.d(TAG, "delete " + (link != null ? link.data : "null"));
+            Log.d(TAG, "delete " + (link1 != null ? link1.data : "null"));
+        }
+        firstLastList.displayList();
     }
 }

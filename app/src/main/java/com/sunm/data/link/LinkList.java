@@ -9,10 +9,10 @@ import com.sunm.AppConfig;
  */
 
 public class LinkList {
-    private static final boolean DEBUG = AppConfig.DEBUG;
-    private static final String TAG = "LinkList";
+    protected static final boolean DEBUG = AppConfig.DEBUG;
+    protected static final String TAG = "LinkList";
 
-    private Link first;
+    protected Link first;
 
     public LinkList() {
         this.first = null;
