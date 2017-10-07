@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.sunm.AppConfig;
+import com.sunm.data.link.DoublyLinkedList;
 import com.sunm.data.link.FirstLastList;
 import com.sunm.data.link.Link;
 import com.sunm.data.link.LinkList;
@@ -25,6 +26,7 @@ public class DataActivity extends AppCompatActivity {
         firstLastLink();
         linkStack();
         linkQueue();
+        doublyLink();
     }
 
     // 单链表
@@ -114,5 +116,42 @@ public class DataActivity extends AppCompatActivity {
         linkQueue.remove();
         linkQueue.remove();
         linkQueue.displayQueue();
+    }
+
+    // 双向链表
+    private void doublyLink() {
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        list.insertFirst(22);
+        list.insertFirst(44);
+        list.insertFirst(66);
+
+        list.insertLast(11);
+        list.insertLast(33);
+        list.insertLast(55);
+
+        if (DEBUG) {
+            Log.d(TAG, "0--------------------1-------------------2------------------");
+        }
+        list.displayForward();
+        if (DEBUG) {
+            Log.d(TAG, "0--------------------1-------------------2------------------");
+        }
+        list.displayBackward();
+
+        list.deleteFirst();
+        list.deleteLast();
+        list.deleteKey(11);
+        if (DEBUG) {
+            Log.d(TAG, "0--------------------1-------------------2------------------");
+        }
+        list.displayForward();
+
+        list.insertAfter(22, 77);
+        list.insertAfter(33, 88);
+        if (DEBUG) {
+            Log.d(TAG, "0--------------------1-------------------2------------------");
+        }
+        list.displayForward();
     }
 }
