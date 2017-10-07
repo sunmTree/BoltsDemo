@@ -11,6 +11,8 @@ import com.sunm.data.link.Link;
 import com.sunm.data.link.LinkList;
 import com.sunm.data.link.LinkQueue;
 import com.sunm.data.link.LinkStack;
+import com.sunm.data.recursion.DataUtils;
+import com.sunm.data.sort.ArraySh;
 
 public class DataActivity extends AppCompatActivity {
 
@@ -27,6 +29,8 @@ public class DataActivity extends AppCompatActivity {
         linkStack();
         linkQueue();
         doublyLink();
+        recursion();
+        arraySh();
     }
 
     // 单链表
@@ -153,5 +157,34 @@ public class DataActivity extends AppCompatActivity {
             Log.d(TAG, "0--------------------1-------------------2------------------");
         }
         list.displayForward();
+    }
+
+    // 递归
+    private void recursion() {
+        DataUtils dataUtils = new DataUtils();
+
+        int sum4 = dataUtils.triangle(4);
+        int sum10 = dataUtils.triangle(10);
+
+        if (DEBUG) {
+            Log.d(TAG, "sum4 " + sum4 + " sum10 " + sum10);
+        }
+
+        dataUtils.doTowers(3, 'A', 'B', 'C');
+    }
+
+    // 希尔排序
+    private void arraySh() {
+        int maxSize = 10;
+        ArraySh arraySh = new ArraySh(maxSize);
+
+        for (int i = 0; i < maxSize; i++) {
+            long n = (long) (Math.random() * 100.00);
+            arraySh.insert(n);
+        }
+
+        arraySh.display();
+        arraySh.shellSort();
+        arraySh.display();
     }
 }
