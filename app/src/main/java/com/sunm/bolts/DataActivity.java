@@ -13,6 +13,8 @@ import com.sunm.data.link.LinkQueue;
 import com.sunm.data.link.LinkStack;
 import com.sunm.data.recursion.DataUtils;
 import com.sunm.data.sort.ArraySh;
+import com.sunm.data.tree.Node;
+import com.sunm.data.tree.Tree;
 
 public class DataActivity extends AppCompatActivity {
 
@@ -31,6 +33,7 @@ public class DataActivity extends AppCompatActivity {
         doublyLink();
         recursion();
         arraySh();
+        binaryTree();
     }
 
     // 单链表
@@ -186,5 +189,57 @@ public class DataActivity extends AppCompatActivity {
         arraySh.display();
         arraySh.shellSort();
         arraySh.display();
+    }
+
+    // 二叉树
+    private void binaryTree() {
+        Tree theTree = new Tree();
+
+        theTree.insert(50, 1.5);
+        theTree.insert(25, 1.2);
+        theTree.insert(75, 1.7);
+        theTree.insert(12, 1.5);
+        theTree.insert(37, 1.2);
+        theTree.insert(43, 1.7);
+        theTree.insert(30, 1.5);
+        theTree.insert(33, 1.2);
+        theTree.insert(87, 1.7);
+        theTree.insert(93, 1.5);
+        theTree.insert(97, 1.2);
+        theTree.insert(66, 1.7);
+
+        // display
+        if (DEBUG) {
+            Log.d(TAG, "------------------------------displayTree---------------------");
+        }
+        theTree.displayTree();
+
+        // insert
+        if (DEBUG) {
+            Log.d(TAG, "------------------------------insert---------------------");
+        }
+        theTree.insert(79, 1.9);
+
+        // find
+        if (DEBUG) {
+            Log.d(TAG, "------------------------------find---------------------");
+        }
+        Node node = theTree.find(66);
+        if (node != null) {
+            node.displayNode();
+        }
+
+        // delete
+        if (DEBUG) {
+            Log.d(TAG, "------------------------------delete---------------------");
+        }
+        boolean delete = theTree.delete(79);
+
+        // traverse
+        if (DEBUG) {
+            Log.d(TAG, delete + "------------------------------traverse---------------------");
+        }
+
+        theTree.traverse(33);
     }
 }
