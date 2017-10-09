@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.sunm.AppConfig;
+import com.sunm.data.heap.Heap;
 import com.sunm.data.link.DoublyLinkedList;
 import com.sunm.data.link.FirstLastList;
 import com.sunm.data.link.Link;
@@ -33,7 +34,8 @@ public class DataActivity extends AppCompatActivity {
         doublyLink();
         recursion();
         arraySh();
-        binaryTree();
+//        binaryTree();
+        heap();
     }
 
     // 单链表
@@ -241,5 +243,27 @@ public class DataActivity extends AppCompatActivity {
         }
 
         theTree.traverse(33);
+    }
+
+    // 堆
+    private void heap() {
+        Heap heap = new Heap(31);
+
+        heap.insert(70);
+        heap.insert(40);
+        heap.insert(50);
+        heap.insert(20);
+        heap.insert(60);
+        heap.insert(100);
+        heap.insert(80);
+        heap.insert(30);
+        heap.insert(10);
+        heap.insert(90);
+
+        heap.displayHeap();
+        heap.change(6, 110);
+        heap.displayHeap();
+        heap.remove();
+        heap.displayHeap();
     }
 }
